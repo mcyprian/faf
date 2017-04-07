@@ -31,7 +31,7 @@ def check_filename(fn):
 
 @dumpdirs.route("/")
 @admin_required
-def list():
+def dashboard():
     dirs = ((datetime.datetime.fromtimestamp(os.path.getctime(full_path)),
              dir_entry,
              os.path.getsize(full_path))
