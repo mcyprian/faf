@@ -43,7 +43,6 @@
             <ul class="nav navbar-nav navbar-primary">
               <li {% if request.url_rule and request.url_rule.endpoint.startswith('summary.') %}class="active" {% endif %}><a href="{{ url_for('summary.index') }}">Summary</a></li>
               <li {% if request.url_rule and request.url_rule.endpoint.startswith('problems.') %}class="active" {% endif %}><a id="href_problems" href="{{ url_for('problems.dashboard') }}">Problems</a></li>
-              <li {% if request.url_rule and request.url_rule.endpoint.startswith('reports.') %}class="active" {% endif %}><a href="{{ url_for('reports.dashboard') }}">Reports</a></li>
               <li class="dropdown" {% if request.url_rul and request.url_rule.endpoint.startswith('stats.') %}class="active" {% endif %} >
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">

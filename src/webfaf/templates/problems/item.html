@@ -6,6 +6,7 @@
 {% from '_helpers.html' import history_graph %}
 {% from '_helpers.html' import show_backtrace %}
 {% from "_helpers.html" import render_field %}
+{% from "reports/reports_table.html" import reports_table %}
 
 {% block title %}
 Problem #{{ problem.id }} -
@@ -154,6 +155,10 @@ Problem #{{ problem.id }} -
   </div>
 
   <br />
+  <h3>Related reports</h3>
+  <div id="report-list">
+    {{ reports_table(problem.reports) }}
+  </div>
 
   <h3>Report backtrace</h3>
   {% if bt_diff_form and problem.reports|length > 1 %}

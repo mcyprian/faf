@@ -132,7 +132,7 @@ table.counts-table th:nth-child(2) { width: 150px; }
   width: 25%;
 }
 
-#problem-list {
+#problem-list, #report-list {
   min-width: 1100px;
   max-width: 1400px;
 }
