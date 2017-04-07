@@ -65,6 +65,7 @@
             </ul>
             {% if config['OPENID_ENABLED'] %}
               <ul class="nav navbar-nav navbar-utility">
+                  <li><a href="https://apps.fedoraproject.org/notifications" class="fa fa-bell notifications" title="Notifications preferences"></a></li>
                 {% if g.user %}
                   <li><a href="{{ url_for('login.do_logout') }}">Logout {{ g.user.username }}</a></li>
                 {% else %}
