@@ -22,7 +22,7 @@
               <tr>
                 <td data-order="{{ report.id }}"><a href="{{ url_for('reports.item', report_id=report.id)}}">{{report.id}}</a></td>
                 <td>{{ report.component }}</td>
-                <td>{{ report.count }}</td>
+                <td>{{ report.count|readable_int }}</td>
                 <td>
                     {% if report.crashfn %}
                       {{ report.crashfn }}
