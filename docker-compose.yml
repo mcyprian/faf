@@ -1,0 +1,23 @@
+version: '2'
+services:
+  web:
+    image: mcyprian/faf
+    links:
+      - db:db
+    ports:
+      - "5000:5000"
+    container_name: faf_app
+    environment:
+      FAF_DATABASE_URL: postgres://faf:${FAF_DB_PASSWORD}@db/faf
+      #WEBFAF_ENVIRON_PRODUCTION: enable
+  db:
+    image: mcyprian/postgresql
+    volumes:
+      - ./data:/var/lib/pgsql/data:z
+    ports:
+      - "32785:5432"
+    container_name: faf_db
+    environment:
+      POSTGRESQL_PASSWORD: ${FAF_DB_PASSWORD}
+      POSTGRESQL_DATABASE: faf
+      POSTGRESQL_USER: faf

@@ -1,4 +1,7 @@
 import os
+import sys
+import getpass
+import mock
 import logging
 from logging.handlers import SMTPHandler
 
@@ -10,6 +13,8 @@ from flask.ext.rstpages import RSTPages
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug.contrib.fixers import ProxyFix
 from werkzeug.local import LocalProxy
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 from pyfaf.storage.user import User
 from pyfaf.storage import OpSysComponent, Report
@@ -196,4 +201,5 @@ def panic(error):
 
 if __name__ == '__main__':
     import_blueprint_plugins(app)
-    app.run()
+    with mock.patch.object(getpass, "getuser", return_value='default'):
+        app.run(host='0.0.0.0')

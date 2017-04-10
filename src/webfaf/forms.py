@@ -156,7 +156,7 @@ class ProblemFilterForm(Form):
 
     daterange = DaterangeField(
         "Date range",
-        default_days=14)
+        default_days=365)
 
     associate = associate_select
 

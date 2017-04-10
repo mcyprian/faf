@@ -86,12 +86,14 @@ def load_config():
     plugin_config_files = []
     for section in CONFIG_CHILD_SECTIONS:
         if section in cfg:
-            plugins_dir = os.path.join(MAIN_CONFIG_DIR,
-                                       os.path.expanduser(cfg[section]))
+            plugins_dir = os.path.dirname(os.path.dirname(os.path.abspath(
+                os.path.dirname(__file__)))) + "/config/plugins"
             plugin_config_files = get_config_files(plugins_dir)
 
     # append main_config_files to the end so that plugins can't override it
     result = load_config_files(plugin_config_files + main_config_files)
+    if 'FAF_DATABASE_URL' in os.environ:
+        result["storage.connectstring"] = os.environ['FAF_DATABASE_URL']
 
     return result
 
